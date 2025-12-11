@@ -11,7 +11,7 @@ An automated GitHub Actions bot that uses OpenAI's GPT models to generate intell
 
 ## Architecture
 
-````mermaid
+`````mermaid
 flowchart LR
     A[Developer opens / updates PR] --> B[GitHub Pull Request Event]
 
@@ -23,12 +23,11 @@ flowchart LR
 
     F --> G[GitHub API<br/>(Issues Comments)]
     G --> H[Comment posted on PR by github-actions bot]
-
-
+```
 
 ## How It Works (Sequence)
 
-```mermaid
+````mermaid
 sequenceDiagram
     participant Dev as Developer
     participant GH as GitHub
@@ -47,6 +46,8 @@ sequenceDiagram
 
     Bot->>GH: POST comment via GitHub API<br/>(Issues Comments)
     GH-->>Dev: PR shows "🤖 AI-generated PR Summary" comment
+```
+
 
 ## Screenshots
 
@@ -78,7 +79,7 @@ The AI assistant runs automatically on each pull request via a GitHub Actions wo
    ```bash
    git clone <your-repo-url>
    cd pr-ai-assistant
-````
+`````
 
 2. **Create and activate a virtual environment**:
 

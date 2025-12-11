@@ -15,13 +15,13 @@ An automated GitHub Actions bot that uses OpenAI's GPT models to generate intell
 flowchart LR
     A[Developer opens / updates PR] --> B[GitHub Pull Request Event]
 
-    B --> C[GitHub Actions Workflow<br/>pr-ai-assistant]
+    B --> C[GitHub Actions Workflow\npr-ai-assistant]
     C --> D[Checkout repo & compute git diff]
 
     D --> E[OpenAI Chat Completion API]
     E --> F[AI-generated summary, risks, tests]
 
-    F --> G[GitHub API<br/>(Issues Comments)]
+    F --> G[GitHub API\n(Issues Comments)]
     G --> H[Comment posted on PR by github-actions bot]
 ```
 
@@ -78,8 +78,6 @@ The AI assistant runs automatically on each pull request via a GitHub Actions wo
    git clone <your-repo-url>
    cd pr-ai-assistant
    ```
-
-````
 
 2. **Create and activate a virtual environment**:
 
@@ -260,4 +258,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 For issues or questions, please open an issue in the GitHub repository.
-````
+
+```
+
+```

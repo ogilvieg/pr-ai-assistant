@@ -15,14 +15,14 @@ An automated GitHub Actions bot that uses OpenAI's GPT models to generate intell
 flowchart LR
     A[Developer opens / updates PR] --> B[GitHub Pull Request Event]
 
-    B --> C[GitHub Actions Workflow\npr-ai-assistant]
+    B --> C[GitHub Actions Workflow]
     C --> D[Checkout repo & compute git diff]
 
     D --> E[OpenAI Chat Completion API]
-    E --> F[AI-generated summary, risks, tests]
+    E --> F[AI-generated summary]
 
-    F --> G[GitHub API\n(Issues Comments)]
-    G --> H[Comment posted on PR by github-actions bot]
+    F --> G[GitHub API]
+    G --> H[Comment posted on PR]
 ```
 
 ## How It Works (Sequence)
@@ -31,8 +31,8 @@ flowchart LR
 sequenceDiagram
     participant Dev as Developer
     participant GH as GitHub
-    participant GA as GitHub Actions<br/>Workflow
-    participant Bot as pr-ai-assistant<br/>Python script
+    participant GA as GitHub Actions Workflow
+    participant Bot as pr-ai-assistant Python script
     participant OAI as OpenAI API
 
     Dev->>GH: Open / update Pull Request
@@ -40,12 +40,12 @@ sequenceDiagram
     GA->>GA: Checkout repo & read BASE/HEAD SHAs
     GA->>Bot: Run pr_summary.py with env vars
 
-    Bot->>Bot: Run `git diff` (BASE vs HEAD)
-    Bot->>OAI: Send diff as prompt<br/>request summary + risks + tests
-    OAI-->>Bot: Return structured natural language summary
+    Bot->>Bot: Run git diff (BASE vs HEAD)
+    Bot->>OAI: Send diff as prompt
+    OAI-->>Bot: Return structured summary
 
-    Bot->>GH: POST comment via GitHub API<br/>(Issues Comments)
-    GH-->>Dev: PR shows "🤖 AI-generated PR Summary" comment
+    Bot->>GH: POST comment via GitHub API
+    GH-->>Dev: PR shows AI-generated PR Summary comment
 ```
 
 ## Screenshots

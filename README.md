@@ -64,6 +64,7 @@ This is an example of the comment the bot posts on a pull request after analyzin
 The AI assistant runs automatically on each pull request via a GitHub Actions workflow:
 
 ![GitHub Actions workflow run for pr-ai-assistant](docs/workflow-run.png)
+```
 
 
 ## Setup

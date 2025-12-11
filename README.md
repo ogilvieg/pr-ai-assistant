@@ -9,6 +9,59 @@ An automated GitHub Actions bot that uses OpenAI's GPT models to generate intell
 - 🔍 **Structured Feedback**: Provides summary of changes, potential risks, and suggested validation steps
 - ⚡ **GitHub Actions Integration**: Runs automatically on PR open, reopen, and synchronize events
 
+## Architecture
+
+```mermaid
+flowchart LR
+    A[Developer opens / updates PR] --> B[GitHub Pull Request Event]
+
+    B --> C[GitHub Actions Workflow]
+    C --> D[Checkout repo & compute git diff]
+
+    D --> E[OpenAI Chat Completion API]
+    E --> F[AI-generated summary]
+
+    F --> G[GitHub API]
+    G --> H[Comment posted on PR]
+```
+
+## How It Works (Sequence)
+
+```mermaid
+sequenceDiagram
+    participant Dev as Developer
+    participant GH as GitHub
+    participant GA as GitHub Actions Workflow
+    participant Bot as pr-ai-assistant Python script
+    participant OAI as OpenAI API
+
+    Dev->>GH: Open / update Pull Request
+    GH-->>GA: Trigger pull_request event
+    GA->>GA: Checkout repo & read BASE/HEAD SHAs
+    GA->>Bot: Run pr_summary.py with env vars
+
+    Bot->>Bot: Run git diff (BASE vs HEAD)
+    Bot->>OAI: Send diff as prompt
+    OAI-->>Bot: Return structured summary
+
+    Bot->>GH: POST comment via GitHub API
+    GH-->>Dev: PR shows AI-generated PR Summary comment
+```
+
+## Screenshots
+
+### AI-generated PR Summary Comment
+
+This is an example of the comment the bot posts on a pull request after analyzing the diff:
+
+![AI-generated PR summary comment from github-actions bot](docs/pr-summary-comment.png)
+
+### GitHub Actions Workflow Run
+
+The AI assistant runs automatically on each pull request via a GitHub Actions workflow:
+
+![GitHub Actions workflow run for pr-ai-assistant](docs/workflow-run.png)
+
 ## Setup
 
 ### Prerequisites
@@ -205,3 +258,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 For issues or questions, please open an issue in the GitHub repository.
+
+```
+
+```

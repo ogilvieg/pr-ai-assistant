@@ -25,6 +25,7 @@ flowchart LR
     G --> H[Comment posted on PR by github-actions bot]
 
 
+
 ```markdown
 ## How It Works (Sequence)
 
@@ -47,6 +48,7 @@ sequenceDiagram
 
     Bot->>GH: POST comment via GitHub API<br/>(Issues Comments)
     GH-->>Dev: PR shows "🤖 AI-generated PR Summary" comment
+
 
 ```markdown
 ## Screenshots
